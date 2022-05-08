@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora IMC</title>
+
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(to right, rgb(29, 136, 207), rgb(110, 25, 143));
+            text-align: center;
+            color:white;
+        }
+        .res{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50%;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 1em;
+            border-radius: 10px;
+        }
+        button{
+            background-color: slateblue;
+            color: white;
+            border: none;
+            padding: 1em;
+            border-radius: 10px;
+            box-shadow: 1px 1px 6px black;
+        }
+    </style>
+
+</head>
+<body>
+    
+    <h1>Calculadora IMC</h1>
+    <h2>Informe sua altura: </h2> <input type="number" name="alt" id="alt">
+    <h2>Informe seu peso: </h2> <input type="number" name="peso" id="peso">
+    <input type="button" value="Calcular" onclick="Calcular()">
+    <div id="res">
+    
+    <script>
+        function Calcular(){
+
+        var altura = document.querySelector("input#alt")
+        var pes = document.querySelector("input#peso")
+        var res = document.querySelector("div#res")
+        var altura1 = Number(altura.value)
+        var peso1 = Number(pes.value)
+        res.innerHTML = (`Sua altura é: ${altura1} Cm<br> Seu peso é: ${peso1} Kg<br>`)
+        var resimc = peso1 / (altura1 * altura1)
+        var arredimc = resimc.toFixed(2)
+        res.innerHTML += (`Seu IMC é: ${arredimc}`)
+        
+        if(resimc < 10){
+         res.innerHTML += "<p>Sua massa corporal é: Desnutrição grau V<p>"
+        }
+        else if (resimc >= 10 && resimc < 12.9){
+            res.innerHTML += ("<p>Sua massa corporal é: Desnutrição grau IV<p>")
+        }
+        else if (resimc >= 13 && resimc < 15.9){
+            res.innerHTML += ("<p>Sua massa corporal é: Desnutrição grau III<p>")
+        }
+        else if (resimc >= 16 && resimc < 16.9){
+            res.innerHTML += ("<p>Sua massa corporal é: Desnutrição grau II<p>")
+        }
+        else if (resimc >= 17 && resimc < 18.4){
+            res.innerHTML += ("<p>Sua massa corporal é: Desnutrição grau I<p>")
+        }
+        else if (resimc >= 18,5 && resimc < 24.9){
+            res.innerHTML += ("<p>Sua massa corporal é: Normal<p>")
+        }
+        else if (resimc >= 25 && resimc < 29.9){
+            res.innerHTML += ("<p>Sua massa corporal é: Pré-Obesidade<p>")
+        }
+        else if (resimc >= 30 && resimc < 34.5){
+            res.innerHTML += ("<p>Sua massa corporal é: Obesidade grau I<p>")
+        }
+        else if (resimc >= 35 && resimc < 39.9){
+            res.innerHTML += ("<p>Sua massa corporal é: Obesidade grau II<p>")
+        }
+        else {
+            res.innerHTML += ("<p>Sua massa corporal é: Obesidade grau III<p>")
+        }
+        
+    }
+    </script>
+</body>
+</html>
